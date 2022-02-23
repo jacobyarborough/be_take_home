@@ -1,5 +1,5 @@
 class Tea < ApplicationRecord
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
 
-  validate_presence_of :title, :description, :brew_time
+  validates_presence_of :title, :description, :brew_time
 end
