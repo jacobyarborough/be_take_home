@@ -26,7 +26,7 @@ localhost:3000
 
 - `GET /subscriptions?customer_id=`  :exposes all subscriptions, both active and canceled, for a particular customer with a customer_id parameter.
 - `POST /customer_subscriptions { customer_id:, subscription_id: }`  :Creates a new customer subscription. Must pass a JSON body payload.
-- `PUT /customer_subscriptions {customer_id:, subscription_id:, status: }`  :Updates a cusomter subscription. Must pass a JSON body payload.    :
+- `PUT /customer_subscriptions {customer_id:, subscription_id:, status: }`  :Updates a cusomter subscription. Must pass a JSON body payload. 
 
 ## Database Schema
 
