@@ -30,4 +30,4 @@ localhost:3000
 
 ## Database Schema
 
-<img width="601" alt="Screen Shot 2022-02-14 at 9 28 54 AM" src="https://user-images.githubusercontent.com/81917337/153910131-dee749ad-32e3-47e4-b44b-c148c8d3a120.png">
+![Screen Shot 2022-02-23 at 8 23 54 PM](https://user-images.githubusercontent.com/86209646/155453263-f2805c5c-7f31-4c1a-a8f4-843bd3b62a5a.png)
