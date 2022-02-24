@@ -1,6 +1,6 @@
-# Stall Card Back-End Application
+# Mod 4 BE Take Home
 
-Stall Card Back-End is a Ruby on Rails Application that exposes data to the Stall Card Front-End Application.  The data from the databases are exposed using GraphQL. 
+Mod4 BE Take Home is a ruby on rails API that exposes endpoints for a hypothetical frontend. The application exposes data related to customers and their tea subscriptions. This is a RESTful API that returns JSON when a request is sent. 
 
 This application uses Ruby 2.7.2 and Rails 5.2.6.
 
@@ -9,18 +9,13 @@ This application uses Ruby 2.7.2 and Rails 5.2.6.
 Follow these steps from terminal:
 ```
 cd into desired directory
-git clone git@github.com:Stall-Card-App/stall_card_be.git
-cd stall_card_be
+git clone git@github.com:jacobyarborough/be_take_home.git
+cd be_take_home
 bundle install
-rails db:{create,migrate}
+rails db:{create,migrate, seed}
 bundle exec rspec
 rails server
 ```
-
-## API Key Requests:
-
-- [MapQuest Geocoding API](https://developer.mapquest.com/documentation/geocoding-api/)
-- [Open Weather API](https://openweathermap.org/api/one-call-api)
 
 Navigate to the browser:
 ```
@@ -29,8 +24,9 @@ localhost:3000
 
 ## Requesting Database Endpoint Items
 
-- `GET /api/v1/forecast?location=`                 :uses location parameter to consume and expose the forecast for the location
-- `POST /graphql`                                  :exposes requested data for barns, employees, horses, owners, vets, farriers
+- `GET /subscriptions?customer_id=`  :exposes all subscriptions, both active and canceled, for a particular customer with a customer_id parameter.
+- `POST /customer_subscriptions { customer_id:, subscription_id: }`  :Creates a new customer subscription. Must pass a JSON body payload.
+- `PUT /customer_subscriptions {customer_id:, subscription_id:, status: }`  :Updates a cusomter subscription. Must pass a JSON body payload.    :
 
 ## Database Schema
 
