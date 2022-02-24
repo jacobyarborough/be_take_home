@@ -5,15 +5,14 @@ class Api::V1::CustomerSubscriptionsController < ApplicationController
   end 
 
   def update
-    sub = CustomerSubscription.find(subscription_params[:subscription_id], subscription_params[:subscription_id])
-    sub.update(status: "canceled")
+    sub = CustomerSubscription.find_by(customer_id: subscription_params[:customer_id], subscription_id: subscription_params[:subscription_id])
+    sub.update(status: subscription_params[:status])
     render json: CustomerSubscriptionSerializer.new(sub)
   end 
 
   private 
 
   def subscription_params
-    binding.pry
     JSON.parse(request.body.string, symbolize_names: :true)
   end 
 end 

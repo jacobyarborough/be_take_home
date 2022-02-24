@@ -32,14 +32,10 @@ RSpec.describe 'Subscriptions', type: :request do
         expect(subs[0][:attributes][:tea_id]).to be_an(Integer)
       end 
 
-      it 'returns status code 201' do 
+      it 'returns status code 200' do 
         expect(response).to be_successful 
         expect(response).to have_http_status(200)
       end 
-    end 
-
-    context 'the customer does not exist' do 
-      let(:params) { {"customer_id": 1000001}}
     end 
   end 
 end 
