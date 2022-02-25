@@ -36,6 +36,24 @@ RSpec.describe 'Subscriptions', type: :request do
         expect(response).to be_successful 
         expect(response).to have_http_status(200)
       end 
+    end
+    
+    context 'the customer does not exist' do 
+      let(:params) { {"customer_id": 111000 } }
+
+      it 'returns a 404 error message' do 
+        expect(response).to have_http_status(404)
+        expect(response.body).to match(/Customer is invalid or left blank/)
+      end 
     end 
+
+    context 'the customer id is left blank' do 
+      let(:params) { { } }
+
+      it 'returns 404 status error message' do 
+        expect(response).to have_http_status(404)
+        expect(response.body).to match(/Customer is invalid or left blank/)
+      end 
+    end  
   end 
 end 
