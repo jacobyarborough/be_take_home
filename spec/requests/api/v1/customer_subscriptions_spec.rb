@@ -36,6 +36,24 @@ RSpec.describe 'Customer Subscriptions', type: :request do
         expect(response).to have_http_status(200)
       end 
     end 
+
+    context 'the customer does not exist' do 
+      let(:body) { {"customer_id": 1000005, "subscription_id": subscription1.id, status: 'canceled'} }
+
+      it 'returns a 404 error message' do 
+        expect(response).to have_http_status(404)
+        expect(response.body).to match(/Customer and or subscription is invalid or left blank/)
+      end 
+    end 
+
+    context 'the subscription does not exist' do 
+      let(:body) { {"customer_id": customer.id, "subscription_id": 100005, status: 'canceled'} }
+
+      it 'returns a 404 error message' do 
+        expect(response).to have_http_status(404)
+        expect(response.body).to match(/Customer and or subscription is invalid or left blank/)
+      end 
+    end 
   end 
 
   describe 'Put /api/v1/customer_subscriptions' do
@@ -46,7 +64,6 @@ RSpec.describe 'Customer Subscriptions', type: :request do
     context 'when the request is valid' do 
       it 'returns all subscriptions for a customer' do 
         sub_update = JSON.parse(response.body, symbolize_names: :true)[:data]
-        binding.pry
         expect(sub_update).not_to be_empty
         expect(sub_update).to be_a(Hash)
         expect(sub_update.count).to eq(3)
@@ -66,6 +83,24 @@ RSpec.describe 'Customer Subscriptions', type: :request do
       it 'returns status code 200' do 
         expect(response).to be_successful 
         expect(response).to have_http_status(200)
+      end 
+    end 
+
+    context 'the customer does not exist' do 
+      let(:body) { {"customer_id": 1000005, "subscription_id": subscription1.id, status: 'canceled'} }
+
+      it 'returns a 404 error message' do 
+        expect(response).to have_http_status(404)
+        expect(response.body).to match(/Customer and or subscription is invalid or left blank/)
+      end 
+    end 
+
+    context 'the subscription does not exist' do 
+      let(:body) { {"customer_id": customer.id, "subscription_id": 100005, status: 'canceled'} }
+
+      it 'returns a 404 error message' do 
+        expect(response).to have_http_status(404)
+        expect(response.body).to match(/Customer and or subscription is invalid or left blank/)
       end 
     end 
   end 
